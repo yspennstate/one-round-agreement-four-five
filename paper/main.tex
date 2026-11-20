@@ -23,7 +23,7 @@ Jerusalem, Givat Ram,}\\
 \maketitle
 
 \begin{abstract}
-In the agreement optimization problem of Fraigniaud, Patt-Shamir and Rajsbaum, processes with binary inputs exchange one round of messages, each delivered independently with probability $p$, and then decide real values; when all inputs agree, every process must decide the common input. The cost of an algorithm is its expected discrepancy, the largest difference between two decisions, on the worst input assignment. The optimal one-round cost was known for two and three processes. We determine it for four and five processes and every $p$. There are four regimes for four processes and seven for five, with algebraic thresholds; on the upper regimes the optimal decisions vary continuously with $p$. At $p=1/2$ the optima are 941/1936 and 394955/851328. The lower bounds are certified in exact arithmetic by weighting two input assignments and checking every decision vector whose entries are 0, 1/2 or 1.
+In the agreement optimization problem of Fraigniaud, Patt-Shamir and Rajsbaum, processes with binary inputs exchange one round of messages, each delivered independently with probability $p$, and then decide real values; when all inputs agree, every process must decide the common input. The cost of an algorithm is its expected discrepancy, the largest difference between two decisions, on the worst input assignment. The optimal one-round cost was known for two and three processes. We determine it for four and five processes and every $p$. For four processes the optimum is given by four formulas on four intervals of $p$, and for five processes by seven, with algebraic endpoints; on the upper intervals the optimal decisions depend on $p$. At $p=1/2$ the optima are 941/1936 and 394955/851328. The lower bounds are proved in exact arithmetic by weighting two input assignments and checking every decision vector whose entries are 0, 1/2 or 1.
 \end{abstract}
 
 \noindent\textit{Keywords:} approximate agreement, distributed computing, message loss, minimax, piecewise linear optimization.
@@ -32,23 +32,25 @@ In the agreement optimization problem of Fraigniaud, Patt-Shamir and Rajsbaum, p
 
 \section{Introduction}\label{sec:intro}
 
-Fraigniaud, Patt-Shamir and Rajsbaum \cite{FPR} introduced a stochastic version of approximate agreement. There are $n$ synchronous processes on a complete network. Process $i$ holds an input $x_i\in\{0,1\}$. In each round it sends a message to every other process, and each message is delivered independently with probability $p$. After a fixed number of rounds every process decides a value $y_i\in[0,1]$. Validity requires that if all inputs equal $x$ then every process decides $x$. The discrepancy of an execution is $\max_i y_i-\min_i y_i$. The cost of a deterministic algorithm is its expected discrepancy, maximized over input assignments. We write $q=1-p$ and $\OPT_n(p)$ for the least cost of a one-round algorithm for $n$ processes.
+Fraigniaud, Patt-Shamir and Rajsbaum \cite{FPR} introduced a stochastic version of approximate agreement \cite{DLPSW}. There are $n$ synchronous processes on a complete network. Process $i$ holds an input $x_i\in\{0,1\}$. In each round it sends a message to every other process, and each message is delivered independently with probability $p$; in a one-round algorithm a process may be taken to send its input. After a fixed number of rounds every process $i$ decides a value $d_i\in[0,1]$. Validity requires that if all inputs equal $x$ then every process decides $x$. The discrepancy of an execution is $\max_i d_i-\min_i d_i$. The cost of a deterministic algorithm is its expected discrepancy, maximized over input assignments. We write $q=1-p$ and $\OPT_n(p)$ for the least cost of a one-round algorithm for $n$ processes.
 
-For two processes Fraigniaud, Patt-Shamir and Rajsbaum proved that $\OPT_2(p)=\min\{q,\,p^2+q^2\}$ \cite[Theorem~3]{FPR}. The optimum is attained for $p\le\h$ by Flip Value (FV), in which a process that receives the other value adopts it, and for $p\ge\h$ by the Agreed Meeting Point AMP$(a)$, in which such a process decides $a$, for any $a\in[0,1]$; in particular by AMP$(0)$, which decides only $0$ and $1$. Their proof rests on an integrality lemma: some optimal algorithm decides only values in $\{0,1\}$. The lemma fails for three processes \cite[Section~5.1]{FPR}. For three processes they wrote the problem as a linear program in the decisions, with one constraint for each input assignment, and solved it; the optimum has two thresholds, $\alpha_3\approx0.3461$ and $\h$, and on each of the three intervals one algorithm, independent of $p$ there, is optimal \cite[Section~5.1, Theorem~13]{FPR}. They also obtained one-round algorithms whose discrepancy tends to $0$ as $n$ grows \cite[Theorem~15]{FPR}, and asked for the optimal algorithms for every $n>2$ \cite[Section~7]{FPR}. We determine $\OPT_4$ and $\OPT_5$ for every $p$ (Theorems~\ref{thm:four} and~\ref{thm:five}).
+For two processes Fraigniaud, Patt-Shamir and Rajsbaum proved that $\OPT_2(p)=\min\{q,\,p^2+q^2\}$ \cite[Theorem~3]{FPR}. The optimum is attained for $p\le\h$ by their algorithm Flip Value (FV), in which a process that receives the other value decides it, and for $p\ge\h$ by their Agreed Meeting Point AMP$(a)$, in which such a process decides $a$, for any $a\in[0,1]$. For two processes and any number of rounds some optimal algorithm decides only the values $0$ and $1$ \cite[Section~4.2]{FPR}. This fails for three processes. There they write the one-round problem as a linear program in the decisions, with one constraint for each input assignment, and solve it \cite[Section~5.1]{FPR}. The optimum $\OPT_3$ has two thresholds, $\theta\approx0.3461$ and $\h$, and on each of the three intervals one algorithm, the same for every $p$ in the interval, is optimal \cite[Theorem~13]{FPR}. For large $n$ the expected discrepancy of AMP$(a)$ after one round tends to $0$ on the input assignments in which each of the two values is held by $\omega(\log_{1/q}n)$ processes \cite[Theorem~14]{FPR}, and a two-round algorithm achieves this on every input assignment \cite[Theorem~15]{FPR}. They ask for the optimal algorithms for every $n>2$ \cite[Section~7]{FPR}. We determine $\OPT_4$ and $\OPT_5$ for every $p$ (Theorems~\ref{thm:four} and~\ref{thm:five}).
 
-The cases $n=4$ and $n=5$ differ from $n\le3$ in one respect. Up to a permutation of the processes an input assignment is determined by its number $k$ of ones, and it suffices to consider algorithms given by a vector $y\in[0,1]^m$ of decisions (Lemma~\ref{lem:sym}), with $m=6$ for $n=4$ and $m=10$ for $n=5$. Let $E_k(y)$ be the expected discrepancy on an assignment with $k$ ones; then $E_k=E_{n-k}$ and $\OPT_n=\min_y\max_{1\le k\le n/2}E_k(y)$. For $n\le3$ the maximum has one term. For $n=4$ and $n=5$ it has two, $E_1$ and $E_2$, and for $p$ above a threshold ($\alpha_4\approx0.4245$ for $n=4$) the optimal algorithm is a mixture $tu+(1-t)v$ of two fixed algorithms with a weight $t$ that depends on $p$. On $[\alpha_4,\h]$ and on $[\h,1]$ the function $\OPT_4$ is rational and not a polynomial, whereas the expected discrepancy of a fixed algorithm on each input assignment is a polynomial in $p$, so no finite list of algorithms independent of $p$ is optimal. Two statements take the place of the integrality lemma. Each $E_k$ is convex, and linear on the cells into which the hyperplanes $y_i=y_j$, $y_i+y_j=1$ and $y_i=\h$ cut the cube; every vertex of this subdivision lies in $\{0,\h,1\}^m$ (Lemma~\ref{lem:vert}). Hence, for every $\lambda\in[0,1]$,
+The cases $n=4$ and $n=5$ differ from $n\le3$ in one respect. Up to a permutation of the processes an input assignment is determined by its number $k$ of ones, and it suffices to consider algorithms given by a vector $y\in[0,1]^m$ of decisions (Lemma~\ref{lem:sym}), with $m=6$ for $n=4$ and $m=10$ for $n=5$. Let $E_k(y)$ be the expected discrepancy on an assignment with $k$ ones. The exchange of the values $0$ and $1$ gives $E_k=E_{n-k}$, so $\OPT_n=\min_y\max_{1\le k\le n/2}E_k(y)$. For $n\le3$ only $E_1$ occurs. For $n=4$ and $n=5$ both $E_1$ and $E_2$ occur, and for $p$ above a threshold ($\alpha_4\approx0.4245$ for $n=4$) the optimal algorithm is a mixture $tu+(1-t)v$ of two fixed algorithms $u$ and $v$ with a coefficient $t$ that depends on $p$.
+
+On $[\alpha_4,\h]$ and on $[\h,1]$ the function $\OPT_4$ is rational and not a polynomial, whereas the expected discrepancy of a fixed algorithm on a fixed input assignment is a polynomial in $p$. Hence on these intervals no finite set of algorithms that do not depend on $p$ contains an optimal algorithm for every $p$. Each $E_k$ is convex on $[0,1]^m$ and linear on each cell of the subdivision of the cube by the hyperplanes $y_i=y_j$, $y_i+y_j=1$ and $y_i=\h$, and every vertex of this subdivision lies in $\{0,\h,1\}^m$ (Lemma~\ref{lem:vert}). Hence, for every $\lambda\in[0,1]$,
 \[
 \OPT_n\;\ge\;\min_{y\in[0,1]^m}\bigl(\lambda E_1+(1-\lambda)E_2\bigr)(y)\;=\;\min_{w\in\{0,\h,1\}^m}\bigl(\lambda E_1+(1-\lambda)E_2\bigr)(w),\qquad n=4,5
 \]
-(Proposition~\ref{prop:lower}). For $w\in\{0,\h,1\}^m$ the $E_k(w)$ are polynomials in $p$ with rational coefficients. With $\lambda$ a rational function of $p$, a bound $\OPT_n\ge\Phi$ on an interval of $p$ is therefore a family of $3^m$ polynomial inequalities on that interval, and these are decided by Sturm sequences. The matching upper bound is the mixture above, with $t$ chosen so that $tE_k(u)+(1-t)E_k(v)$ takes the same value for $k=1$ and $k=2$ (Lemma~\ref{lem:mix}).
+(Proposition~\ref{prop:lower}). For $w\in\{0,\h,1\}^m$ the $E_k(w)$ are polynomials in $p$ with rational coefficients. When $\lambda$ is a rational function of $p$, a bound $\OPT_n\ge\Phi$ on an interval of $p$ follows from $3^m$ inequalities between rational functions on that interval, and these are decided by Sturm sequences. The matching upper bound comes from the mixture $tu+(1-t)v$ with $t$ chosen so that $tE_k(u)+(1-t)E_k(v)$ takes the same value for $k=1$ and $k=2$; by convexity this value bounds the cost of the mixture (Lemma~\ref{lem:mix}).
 
-In a related model a broadcast reaches all other processes or none of them; consensus in that model is studied in \cite{FPR26}. Knight, Lehnherr and Rajsbaum \cite{KLR26} treat randomized coordinated attack, approximate agreement and consensus with lost messages in probabilistic epistemic logic. We keep the model of \cite{FPR}, in which each message is lost independently.
+In a related model a broadcast reaches all other processes or none of them; consensus in that model is studied in \cite{FPR26}. Knight, Lehnherr and Rajsbaum \cite{KLR26} treat randomized coordinated attack \cite{Gray}, approximate agreement and consensus with lost messages in probabilistic epistemic logic. We keep the model of \cite{FPR}, in which each message is lost independently.
 
-A symmetric algorithm is described by the value $y(k_0,k_1)$ decided by a process with input $0$ that received $k_0$ zeros and $k_1\ge1$ ones. A process with input $0$ that received no one must decide $0$, and a process with input $1$ decides $1-y(k_1,k_0)$. We call the pairs $(k_0,k_1)$ views. For $n=4$ they are, in the order used for decision vectors,
+An algorithm is symmetric if it is invariant under permutations of the processes and under the exchange of the values $0$ and $1$. A symmetric algorithm is described by the value $y(k_0,k_1)$ decided by a process with input $0$ that received $k_0$ zeros and $k_1\ge1$ ones. A process with input $0$ that received no one must decide $0$, and a process with input $1$ decides $1-y(k_1,k_0)$. We call the pairs $(k_0,k_1)$ views, and the vector of the values $y(k_0,k_1)$ over the views, in the order below, the decision vector of the algorithm. For $n=4$ the views are
 \[
 (0,1),\ (0,2),\ (0,3),\ (1,1),\ (1,2),\ (2,1),
 \]
-and for $n=5$ they are $(0,1),(0,2),(0,3),(0,4),(1,1),(1,2),(1,3),(2,1),(2,2),(3,1)$. For $n=4$ we use the following decision vectors:
+and for $n=5$ they are $(0,1),(0,2),(0,3),(0,4),(1,1),(1,2),(1,3),(2,1),(2,2),(3,1)$. For every $n$, FV decides $1$ in every view, AMP$(a)$ decides $a$ in every view, and $\mathrm{AMP}'$ is AMP$(\h)$ except that $y(0,n-1)=1$. For $n=4$ these and one more decision vector are
 \begin{align*}
 \mathrm{FV}&=(1,1,1,1,1,1), & \mathrm{AMP}(\h)&=(\h,\h,\h,\h,\h,\h),\\
 \mathrm{AMP}'&=(\h,\h,1,\h,\h,\h), & v_4&=(\h,1,1,0,\h,0).
@@ -84,30 +86,30 @@ $\Phi_{1/2}=(p-1)(4p^{12}-54p^{11}+224p^{10}-501p^9+691p^8-616p^7+333p^6-81p^5$\
 $t_{1/2}=-(2p^2-8p+3)/(2pD_{1/2})$\\
 \bottomrule
 \end{tabular}
-\caption{The two upper regimes for $n=4$.}\label{tab:four}
+\caption{The formulas of Theorem~\ref{thm:four} on $[\alpha_4,\h]$ and on $[\h,1]$.}\label{tab:four}
 \end{table}
 
-Below $\beta_4$ the optimum is FV, and from $\beta_4$ to $0.4189$ it is AMP$(\h)$, as for two processes. Above $\alpha_4$ neither is optimal. The algorithm of Theorem~\ref{thm:four} moves the decisions in the views $(0,2)$, $(1,1)$ and $(2,1)$ away from $\h$ by $t(p)$, which is $0$ at $\alpha_4$ and at most about $0.124$; on the fourth interval the decision in the view $(0,3)$ moves with it. The two upper families meet at $p=\h$, where both give $941/1936$. For $n=2$ and $n=3$ the optimum equals $q$ for $p\ge\h$; for $n=4$ it lies below $q$ on part of that range and above it near $p=1$ (Table~\ref{tab:values}).
+Below $\beta_4$ the optimum is attained by FV, and from $\beta_4$ to $0.4189$ by AMP$(\h)$, as for two processes. Above $\alpha_4$ neither is optimal. The algorithm of Theorem~\ref{thm:four} moves the decisions in the views $(0,2)$, $(1,1)$ and $(2,1)$ away from $\h$ by $t_1(p)$ on the third interval and by $t_{1/2}(p)$ on the fourth; this displacement is $0$ at $\alpha_4$ and at most about $0.124$, and on the fourth interval the decision in the view $(0,3)$ moves with it. The subscript of $\Phi_1$ and $t_1$ is the decision of $\mathrm{AMP}'$ in the view $(0,3)$, and that of $\Phi_{1/2}$ and $t_{1/2}$ the decision of AMP$(\h)$ there. The formulas of the third and fourth intervals agree at $p=\h$, where both give $941/1936$. For $n=2$ and $n=3$ the optimum equals $q$ for $p\ge\h$; for $n=4$ it is below $q$ up to a point $p_0\approx0.640$ and above $q$ from there to $1$ (Table~\ref{tab:values}).
 
-For $n=5$ the optimal algorithms are given in Table~\ref{tab:five}. There $\mathrm{FV}_1$ decides $1$ in the views with at most one zero and $0$ in the others, and $\mathrm{AMP}'$ is AMP$(\h)$ with $y(0,4)=1$.
+For $n=5$ the optimal algorithms are given in Table~\ref{tab:five}. There $\mathrm{FV}_1$ decides $1$ in the views with at most one zero and $0$ in the others.
 
 \begin{theorem}\label{thm:five}
 There are $0<\beta_5<\gamma_5<\delta_5<\h<\epsilon_5<\zeta_5<1$, with $\beta_5\approx0.109884$, $\gamma_5\approx0.410601$, $\delta_5\approx0.414398$, $\epsilon_5\approx0.565484$ and $\zeta_5\approx0.673303$, algebraic numbers whose minimal polynomials are given in Table~\ref{tab:five}, such that
 \[
 \OPT_5(p)=\begin{cases}
 P_5(q), & 0\le p\le\beta_5,\\[2pt]
-1-\h\big[(1-q^2)^3+(1-q^3)^2\big], & \beta_5\le p\le\gamma_5,
+1-\h\bigl[(1-q^2)^3+(1-q^3)^2\bigr], & \beta_5\le p\le\gamma_5,
 \end{cases}
 \]
 where
 \[
 P_5(q)=q\,(6-15q+16q^2-12q^4+33q^7-42q^8-3q^9+42q^{10}-25q^{11}-6q^{12}+9q^{13}-2q^{14}).
 \]
-On each of the intervals $[\gamma_5,\delta_5]$, $[\delta_5,\h]$, $[\h,\epsilon_5]$, $[\epsilon_5,\zeta_5]$ and $[\zeta_5,1)$, $\OPT_5$ is the rational function
+On each of the intervals $[\gamma_5,\delta_5]$, $[\delta_5,\h]$, $[\h,\epsilon_5]$, $[\epsilon_5,\zeta_5]$ and $[\zeta_5,1]$, $\OPT_5$ is the rational function
 \begin{equation}\label{eq:mix}
 \Phi_{u,v}=\frac{a_ub_v-a_vb_u}{(a_u-b_u)-(a_v-b_v)},\qquad a_w=E_1(w),\ b_w=E_2(w),
 \end{equation}
-for the pair $(u,v)$ of Table~\ref{tab:five}; here $E_k(w)$ is the expected discrepancy of the decision vector $w$ when $k$ processes have input $1$, a polynomial in $p$ of degree at most $20$. The optimum is attained by $\mathrm{FV}_1$ on the first interval, by $\mathrm{AMP}'$ on the second, and on the others by $tu+(1-t)v$ with $t=(b_v-a_v)/((a_u-b_u)+(b_v-a_v))\in[0,1]$. In particular $\OPT_5(\h)=394955/851328\approx0.463928$, and $\OPT_5(1)=0$.
+taken in lowest terms, for the pair $(u,v)$ of Table~\ref{tab:five}, where $E_k(w)$ is the expected discrepancy of the decision vector $w$ on an assignment with $k$ ones; for these pairs $E_1$ and $E_2$ are the polynomials of Table~\ref{tab:poly5}. The optimum is attained by $\mathrm{FV}_1$ on the first interval, by $\mathrm{AMP}'$ on the second, and on the others by $tu+(1-t)v$ with $t=(b_v-a_v)/((a_u-b_u)+(b_v-a_v))\in[0,1]$. In particular $\OPT_5(\h)=394955/851328\approx0.463928$, and $\OPT_5(1)=0$.
 \end{theorem}
 
 \begin{table}[t]
@@ -120,15 +122,15 @@ interval & & $(0,1)$&$(0,2)$&$(0,3)$&$(0,4)$&$(1,1)$&$(1,2)$&$(1,3)$&$(2,1)$&$(2
 \midrule
 $[0,\beta_5]$ & $\mathrm{FV}_1$ & 1&1&1&1&1&1&1&0&0&0\\
 $[\beta_5,\gamma_5]$ & $\mathrm{AMP}'$ & $\h$&$\h$&$\h$&1&$\h$&$\h$&$\h$&$\h$&$\h$&$\h$\\
-$[\gamma_5,\delta_5]$ & $u$ & $\h$&$\h$&$\h$&1&$\h$&$\h$&$\h$&$\h$&$\h$&$\h$\\
+$[\gamma_5,\delta_5]$ & $u=\mathrm{AMP}'$ & $\h$&$\h$&$\h$&1&$\h$&$\h$&$\h$&$\h$&$\h$&$\h$\\
  & $v$ & $\h$&$\h$&1&1&$\h$&$\h$&$\h$&$\h$&$\h$&$\h$\\
-$[\delta_5,\h]$ & $u$ & $\h$&$\h$&$\h$&1&$\h$&$\h$&$\h$&$\h$&$\h$&$\h$\\
+$[\delta_5,\h]$ & $u=\mathrm{AMP}'$ & $\h$&$\h$&$\h$&1&$\h$&$\h$&$\h$&$\h$&$\h$&$\h$\\
  & $v$ & $\h$&1&1&1&0&$\h$&1&0&$\h$&0\\
-$[\h,\epsilon_5]$ & $u$ & \multicolumn{10}{c}{all $\h$}\\
+$[\h,\epsilon_5]$ & $u=\mathrm{AMP}(\h)$ & \multicolumn{10}{c}{all $\h$}\\
  & $v$ & $\h$&1&1&1&0&$\h$&1&0&$\h$&0\\
-$[\epsilon_5,\zeta_5]$ & $u$ & \multicolumn{10}{c}{all $\h$}\\
+$[\epsilon_5,\zeta_5]$ & $u=\mathrm{AMP}(\h)$ & \multicolumn{10}{c}{all $\h$}\\
  & $v$ & $\h$&1&1&1&0&$\h$&1&0&0&0\\
-$[\zeta_5,1)$ & $u$ & \multicolumn{10}{c}{all $\h$}\\
+$[\zeta_5,1]$ & $u=\mathrm{AMP}(\h)$ & \multicolumn{10}{c}{all $\h$}\\
  & $v$ & $\h$&1&1&1&0&$\h$&$\h$&0&$\h$&0\\
 \bottomrule
 \end{tabular}
@@ -169,10 +171,12 @@ $p$ & $\OPT_4$ & $\OPT_5$ & $q$\\
 0.9 & 0.111271 & 0.116181 & 0.1\\
 \bottomrule
 \end{tabular}
-\caption{Values of $\OPT_4$ and $\OPT_5$ at selected $p$, rounded to six decimals, with $q=1-p$, the optimum for two processes when $p\ge\h$, for comparison.}\label{tab:values}
+\caption{Values of $\OPT_4$ and $\OPT_5$ at selected $p$, rounded to six decimals, with $q=1-p$, the optimum for two and for three processes when $p\ge\h$, for comparison.}\label{tab:values}
 \end{table}
 
-For five processes FV is not optimal at small $p$: $\mathrm{FV}_1$ adopts the value $1$ only when it received a $1$ and at most one $0$. Between $\beta_5$ and $\gamma_5$ the optimum equals the cost of AMP$(\h)$ on assignments with two ones, and $\mathrm{AMP}'$ keeps the cost of assignments with one $1$ below it. Above $\gamma_5$ the algorithm of Theorem~\ref{thm:five} mixes two decision vectors with entries in $\{0,\h,1\}$, as above $\alpha_4$ for four processes, and the decisions vary continuously with $p$.
+For five processes and $p\le\beta_5$ the optimal vector $\mathrm{FV}_1$ decides $1$ only in the views with at most one zero. Between $\beta_5$ and $\gamma_5$ the optimum equals the expected discrepancy of AMP$(\h)$ on assignments with two ones, and $\mathrm{AMP}'$ keeps its expected discrepancy on assignments with one $1$ below that value. Above $\gamma_5$ the algorithm of Theorem~\ref{thm:five} mixes two decision vectors with entries in $\{0,\h,1\}$, as above $\alpha_4$ for four processes, and the decisions depend on $p$.
+
+The optimal one-round algorithms for $n\ge6$ processes, and the optimal algorithms with more than one round for $n\ge3$, are not known.
 
 \section{Reduction}
 
@@ -183,17 +187,17 @@ For every one-round algorithm there is a symmetric one, given by a function $y(k
 \end{lemma}
 
 \begin{proof}
-The discrepancy $\max_iy_i-\min_iy_i$ is a convex function of the decision vector. Average the decisions of the algorithm over all relabellings of the processes and over the exchange of the values $0$ and $1$, which replaces every decision $y$ by $1-y$ and every received value $x$ by $1-x$. The average is again a deterministic one-round algorithm and satisfies validity. By convexity its expected discrepancy on each assignment is at most the average of the original's over the orbit of that assignment, hence at most the original's cost. It is invariant under relabelling, so a decision depends only on the input and on how many zeros and ones were received. The exchange gives $y(1,k_0,k_1)=1-y(0,k_1,k_0)$ and $E_k=E_{n-k}$. A process with input $0$ that received only zeros, or nothing, must decide $0$ by validity, since its view is consistent with all inputs being $0$.
+The discrepancy $\max_id_i-\min_id_i$ is a convex function of the vector $(d_1,\dots,d_n)$ of decisions. Average the decisions of the algorithm over all permutations of the processes and over the exchange of the values $0$ and $1$, which replaces every decision $y$ by $1-y$ and every received value $x$ by $1-x$. The average is again a deterministic one-round algorithm and satisfies validity. By convexity its expected discrepancy on each assignment is at most the average of the original's over the orbit of that assignment, hence at most the original's cost. It is invariant under permutations of the processes, so a decision depends only on the input and on how many zeros and ones were received. The exchange gives $y(1,k_0,k_1)=1-y(0,k_1,k_0)$ and $E_k=E_{n-k}$. A process with input $0$ that received only zeros, or nothing, must decide $0$ by validity, since its view is consistent with all inputs being $0$.
 \end{proof}
 
-So $\OPT_n=\min_y\max_{1\le k\le n/2}E_k(y)$ over $y\in[0,1]^m$, where $m$ is the number of views; $m=6$ for $n=4$ and $m=10$ for $n=5$. For $n=4$ and $n=5$ there are two objectives, $E_1$ and $E_2$.
+So $\OPT_n=\min_y\max_{1\le k\le n/2}E_k(y)$ over $y\in[0,1]^m$, as stated in Section~\ref{sec:intro}, and for $n=4$ and $n=5$ the maximum is that of $E_1$ and $E_2$.
 
 \begin{lemma}\label{lem:vert}
-Each $E_k$ is a convex piecewise linear function of $y$ on $[0,1]^m$, linear on the cells of the arrangement of the hyperplanes $y_i=y_j$, $y_i+y_j=1$ and $y_i=\h$. Every vertex of this arrangement in the cube lies in $\{0,\h,1\}^m$. Consequently, for every $\lambda\in[0,1]$ the minimum of $\lambda E_1+(1-\lambda)E_2$ over the cube is attained in $\{0,\h,1\}^m$.
+Each $E_k$ is a convex piecewise linear function of $y$ on $[0,1]^m$, linear on the cells of the subdivision of the cube by the hyperplanes $y_i=y_j$, $y_i+y_j=1$ and $y_i=\h$. Every vertex of this subdivision lies in $\{0,\h,1\}^m$. Consequently, for every $\lambda\in[0,1]$ the minimum of $\lambda E_1+(1-\lambda)E_2$ over the cube is attained in $\{0,\h,1\}^m$.
 \end{lemma}
 
 \begin{proof}
-In a fixed execution each decision is $0$, $1$, $y_i$ or $1-y_i$ for some view $i$. Once the order of the numbers $0,1,y_i,1-y_i$ is fixed, the maximum and the minimum are fixed affine functions of $y$, and this order is constant on each cell of the arrangement. Taking expectations, each $E_k$ is linear on each cell. It is convex as an expectation of maxima minus minima of affine functions.
+In a fixed execution each decision is $0$, $1$, $y_i$ or $1-y_i$ for some view $i$. Once the order of the numbers $0,1,y_i,1-y_i$ is fixed, the maximum and the minimum are fixed affine functions of $y$, and this order is constant on each cell of the subdivision. Taking expectations, each $E_k$ is linear on each cell. It is convex as an expectation of maxima minus minima of affine functions.
 
 A vertex is cut out by $m$ independent equations, each of the form $y_i=c$ with $c\in\{0,\h,1\}$ or $y_i=\pm y_j+c$ with $c\in\{0,1\}$. Join two coordinates when an equation of the second form relates them. On a connected class, every coordinate has the form $y_i=s_iz+c_i$ with $s_i=\pm1$, $c_i\in\mathbb{Z}$ and one free parameter $z$. The class is pinned either by an equation of the first form, which gives $z\in\h\mathbb{Z}$, or by a cycle whose equation is not implied by the others, which reads $2z\in\mathbb{Z}$. In both cases every coordinate of the class lies in $\h\mathbb{Z}\cap[0,1]=\{0,\h,1\}$. A convex function that is linear on each cell of a polyhedral subdivision of the cube attains its minimum at a vertex of the subdivision.
 \end{proof}
@@ -206,14 +210,14 @@ Suppose that on an interval $I$ of values of $p$ there are $\lambda(p)\in[0,1]$ 
 For every $y$, $\max(E_1,E_2)(y)\ge\lambda E_1(y)+(1-\lambda)E_2(y)$, and by Lemma~\ref{lem:vert} the right side is at least its minimum over $\{0,\h,1\}^m$.
 \end{proof}
 
-By Sion's minimax theorem \cite{Sion} the best bound of this kind is exact for $n=4,5$: $\OPT_n=\max_\lambda\min_w(\lambda E_1+(1-\lambda)E_2)(w)$.
+By Sion's minimax theorem \cite{Sion} and Lemma~\ref{lem:vert} the best bound of this kind is exact for $n=4,5$: $\OPT_n=\max_\lambda\min_w(\lambda E_1+(1-\lambda)E_2)(w)$.
 
 \begin{lemma}\label{lem:mix}
 Let $u,v$ be decision vectors such that $a_u-b_u$ and $a_v-b_v$ are not both zero and do not have the same strict sign, where $a_w=E_1(w)$ and $b_w=E_2(w)$. Put $t=(b_v-a_v)/((a_u-b_u)+(b_v-a_v))$. Then $y=tu+(1-t)v$ has $\max(E_1,E_2)(y)\le\Phi_{u,v}$, with $\Phi_{u,v}$ as in \eqref{eq:mix}. Moreover, with $\lambda=(b_v-b_u)/((a_u-a_v)+(b_v-b_u))$ we have $\lambda a_u+(1-\lambda)b_u=\lambda a_v+(1-\lambda)b_v=\Phi_{u,v}$.
 \end{lemma}
 
 \begin{proof}
-The numerator and the denominator of $t$ have the same sign, so $t\in[0,1]$. By convexity $E_k(y)\le tE_k(u)+(1-t)E_k(v)$ for $k=1,2$. Write $\Delta=(a_u-b_u)+(b_v-a_v)$, so that $t=(b_v-a_v)/\Delta$ and $1-t=(a_u-b_u)/\Delta$. Then
+By hypothesis $a_u-b_u$ and $b_v-a_v$ have the same weak sign and are not both zero, so $t\ge0$ and $1-t\ge0$. By convexity $E_k(y)\le tE_k(u)+(1-t)E_k(v)$ for $k=1,2$. Write $\Delta=(a_u-b_u)+(b_v-a_v)$, so that $t=(b_v-a_v)/\Delta$ and $1-t=(a_u-b_u)/\Delta$. Then
 \begin{align*}
 ta_u+(1-t)a_v&=\frac{(b_v-a_v)a_u+(a_u-b_u)a_v}{\Delta}=\frac{a_ub_v-a_vb_u}{\Delta},\\
 tb_u+(1-t)b_v&=\frac{(b_v-a_v)b_u+(a_u-b_u)b_v}{\Delta}=\frac{a_ub_v-a_vb_u}{\Delta},
@@ -223,23 +227,27 @@ and $\Delta=(a_u-b_u)-(a_v-b_v)$, so both equal $\Phi_{u,v}$. For the second sta
 
 \section{Proofs of Theorems \ref{thm:four} and \ref{thm:five}}
 
-For a decision vector $w\in\{0,\h,1\}^m$ the functions $E_k(w)$ are explicit polynomials. Let $L=n(n-1)$ be the number of messages in a round. Then $2E_k(w)=\sum_{j=0}^{L}M_k[w,j]\,p^jq^{L-j}$, where the integer $M_k[w,j]$ is the sum of the doubled discrepancies of the executions in which exactly $j$ messages are delivered.
+For a decision vector $w\in\{0,\h,1\}^m$ the functions $E_k(w)$ are explicit polynomials. Let $L=n(n-1)$ be the number of messages in a round. Then $2E_k(w)=\sum_{j=0}^{L}M_k[w,j]\,p^jq^{L-j}$, where the integer $M_k[w,j]$ is the sum of the doubled discrepancies of the executions in which exactly $j$ messages are delivered. The matrices $M_k$ are computed by enumerating, for each receiving process, the numbers of zeros and ones it receives, combining the receivers, and grouping executions by the set of decisions they produce. All the inequalities below are decided in exact rational and algebraic arithmetic, with Python~3.13 and SymPy~1.14 \cite{SymPy}.
 
-\emph{Lower bounds.} On each interval of the two theorems we take a weight $\lambda(p)$ and the value $\Phi(p)$ stated there. On the first two intervals of each theorem $\lambda=0$. On the others $\lambda$ is the rational function of Lemma~\ref{lem:mix} for the pair $(u,v)$ that attains the optimum. The proof of the lower bound consists of two facts on each interval: $0\le\lambda\le1$, and for each $w\in\{0,\h,1\}^m$ the rational function $\lambda E_1(w)+(1-\lambda)E_2(w)-\Phi$ is nonnegative. Its denominator has no zero on the closed interval, so this is the nonnegativity of a polynomial with rational coefficients on an interval whose endpoints are rational or real algebraic. We decide it exactly. Sturm sequences count the real roots in a rational interval enclosing $I$. The roots inside $I$ are isolated as algebraic numbers and compared with the endpoints through their minimal polynomials and isolating intervals. Finally the sign is read at a rational point of each piece. Decision vectors with the same pair of polynomials give the same condition.
+\emph{Lower bounds.} On each interval of the two theorems we apply Proposition~\ref{prop:lower} with a function $\lambda(p)$ and the value $\Phi(p)$ stated there. On the first two intervals of each theorem $\lambda=0$. On the others $\lambda$ is the rational function of Lemma~\ref{lem:mix} for the pair $(u,v)$ that attains the optimum. For $n=4$, with
+\[
+R=8p^8-32p^7+58p^6-54p^5+18p^4+16p^3-15p^2-p+8,
+\]
+it is $\lambda=2p(p-1)R/D_1$ on $[\alpha_4,\h]$ and $\lambda=2pR/D_{1/2}$ on $[\h,1]$, with $D_1$ and $D_{1/2}$ as in Table~\ref{tab:four}. On each interval $0\le\lambda\le1$, and for each $w\in\{0,\h,1\}^m$ the rational function $\lambda E_1(w)+(1-\lambda)E_2(w)-\Phi$, taken in lowest terms, is nonnegative; these are $3^6=729$ inequalities on each interval for $n=4$ and $3^{10}=59049$ for $n=5$. The denominator has no zero on the interval, so each inequality is the nonnegativity of a polynomial with rational coefficients on an interval whose endpoints are rational or real algebraic. Sturm sequences count its real roots in a rational interval enclosing $I$. The roots inside $I$ are isolated as algebraic numbers and compared with the endpoints through their minimal polynomials and isolating intervals. Finally the sign is read at a rational point of each subinterval between consecutive roots. Decision vectors with the same pair of polynomials give the same condition.
 
-\emph{Upper bounds.} For $n=4$, $E_2(\mathrm{FV})=1-2q^4(1-q^2)^2$ and $E_2(\mathrm{AMP}(\h))=E_2(\mathrm{AMP}')=1-(1-q^2)^2$. On the stated intervals $E_1\le E_2$, as the factorization of $E_2-E_1$ shows. On the third and fourth intervals Lemma~\ref{lem:mix} applies to the pairs $(\mathrm{AMP}',v_4)$ and $(\mathrm{AMP}(\h),v_4)$. The weight it puts on $v_4$ is $2t_1$, respectively $2t_{1/2}$, and $\Phi_{u,v}$ equals $\Phi_1$, respectively $\Phi_{1/2}$. At $p=\h$ both pairs give the weight $\lambda=94/121$. For $n=5$ the vectors $\mathrm{FV}_1$ and $\mathrm{AMP}'$ have $E_2$ equal to the stated optimum and $E_1$ at most it on their intervals. On the other intervals Lemma~\ref{lem:mix} applies, since the sign condition on $a_u-b_u$ and $a_v-b_v$ holds there. At $p=\h$ both adjacent pairs give $394955/851328$, with $\lambda=49103/79812$.
+\emph{Upper bounds.} At $p=1$ every message is delivered, AMP$(\h)$ has discrepancy $0$, and $\OPT_n(1)=0$; below we take $p<1$. For $n=4$, $E_2(\mathrm{FV})=1-2q^4(1-q^2)^2$ and $E_2(\mathrm{AMP}(\h))=E_2(\mathrm{AMP}')=1-(1-q^2)^2$, and
+\begin{align*}
+E_2(\mathrm{FV})-E_1(\mathrm{FV})&=pq^3(2p^4-10p^3+18p^2-11p+3),\\
+E_2(\mathrm{AMP}(\h))-E_1(\mathrm{AMP}(\h))&=\h pq(2p^2-8p+3),\\
+E_2(\mathrm{AMP}')-E_1(\mathrm{AMP}')&=-\h p(2p^5-3p^4+5p^3-11p^2+11p-3).
+\end{align*}
+The quartic has no real root, $2p^2-8p+3\ge0$ for $p\le2-\sqrt{10}/2$, and the quintic is negative on $[0,\alpha_4)$. Hence $E_1\le E_2$ for FV on $[0,1]$, for AMP$(\h)$ on $[0,2-\sqrt{10}/2]$ and for $\mathrm{AMP}'$ on $[0,\alpha_4]$. On the third and fourth intervals Lemma~\ref{lem:mix} applies to the pairs $(\mathrm{AMP}',v_4)$ and $(\mathrm{AMP}(\h),v_4)$. The coefficient it puts on $v_4$ is $2t_1$, respectively $2t_{1/2}$, and $\Phi_{u,v}$ equals $\Phi_1$, respectively $\Phi_{1/2}$. At $p=\h$ both pairs give $\lambda=94/121$. For $n=5$ the vectors $\mathrm{FV}_1$ and $\mathrm{AMP}'$ have $E_2$ equal to the stated optimum and $E_1$ at most it on their intervals. On the other intervals Lemma~\ref{lem:mix} applies, since the sign condition on $a_u-b_u$ and $a_v-b_v$ holds there. At $p=\h$ both adjacent pairs give $394955/851328$, with $\lambda=49103/79812$.
 
-For every $n\ge2$, let $A$ be the event that every process with input $0$ received a $1$, and $B$ the event that every process with input $1$ received a $0$. Under AMP$(\h)$ the discrepancy is $0$ on $A\cap B$, $\h$ on exactly one of the two events and $1$ off both, so it equals $1-\h(\mathbf 1_A+\mathbf 1_B)$, where $\mathbf 1_A$ is $1$ on $A$ and $0$ off it. Hence
+By \cite[proof of Theorem~14]{FPR}, for every $n$,
 \[
 E_k(\mathrm{AMP}(\h))=1-\h\bigl[(1-q^k)^{n-k}+(1-q^{n-k})^k\bigr],
 \]
 which gives the second line of both theorems.
-
-The optimal one-round algorithms for $n\ge6$ processes, and the optimal algorithms with more than one round for $n\ge3$, are not known.
-
-\section{Computations}
-
-All checks use exact rational and algebraic arithmetic. The matrices $M_k$ are computed by enumerating, for each receiving process, the numbers of zeros and ones it receives, combining the receivers, and grouping executions by the set of decisions they produce. The code, the matrices and the outputs of every check are at \url{https://github.com/yspennstate/one-round-agreement-four-five}.
 
 \section*{Funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant 4101/25).
@@ -255,11 +263,52 @@ This paper is part of a broader research project on AI systems proving mathemati
 \section*{Declaration of competing interest}
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
 
+\appendix
+\section{The polynomials for five processes}
+
+Table~\ref{tab:poly5} gives $2E_1$ and $2E_2$ for the decision vectors of Table~\ref{tab:five} on the last five intervals of Theorem~\ref{thm:five}, with $q=1-p$. The vectors $v_{\gamma}$, $v_{\delta}$, $v_{\epsilon}$ and $v_{\zeta}$ are the rows labelled $v$ on $[\gamma_5,\delta_5]$, on $[\delta_5,\h]$ and $[\h,\epsilon_5]$, on $[\epsilon_5,\zeta_5]$, and on $[\zeta_5,1]$. The last three share
+\begin{align*}
+2E_1&=q^3S,\\
+S&=13p^{13}-113p^{12}+432p^{11}-948p^{10}+1324p^9-1260p^8+882p^7\\
+&\qquad-482p^6+201p^5-69p^4+24p^3+2p+2.
+\end{align*}
+With these, $\Phi_{u,v}$ of \eqref{eq:mix} gives $\OPT_5$ at every $p\ge\gamma_5$; at $p=\h$ the pairs $(\mathrm{AMP}',v_\delta)$ and $(\mathrm{AMP}(\h),v_\delta)$ both give $394955/851328$.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{l}
+\toprule
+$\mathrm{AMP}(\h)$:\quad $2E_1=2q(2p^2-p+1)$,\quad $2E_2=q^2(2+4p-3p^2)$\\
+$\mathrm{AMP}'$:\quad $2E_1=4p^7-6p^6+4p^5-p^4-4p^3+6p^2-4p+2$,\quad $2E_2=q^2(2+4p-3p^2)$\\
+\midrule
+$v_\gamma$:\quad $2E_1=-12p^7+34p^6-36p^5+19p^4-8p^3+6p^2-4p+2$\\
+\qquad $2E_2=q(3p^{11}-15p^{10}+25p^9-9p^8-17p^7+15p^6+3p^3-7p^2+2p+2)$\\
+\midrule
+$v_\delta$:\quad $2E_1=q^3S$\\
+\qquad $2E_2=-189p^{16}+1804p^{15}-7719p^{14}+19722p^{13}-33720p^{12}+40764p^{11}-35649p^{10}$\\
+\qquad\qquad $+22434p^9-9666p^8+2382p^7-33p^6-150p^5+28p^3-9p^2+2$\\
+\midrule
+$v_\epsilon$:\quad $2E_1=q^3S$\\
+\qquad $2E_2=q(438p^{15}-2870p^{14}+8956p^{13}-17402p^{12}+23271p^{11}-22323p^{10}+15456p^9$\\
+\qquad\qquad $-7446p^8+2172p^7-150p^6-129p^5+21p^4+21p^3-7p^2+2p+2)$\\
+\midrule
+$v_\zeta$:\quad $2E_1=q^3S$\\
+\qquad $2E_2=q(113p^{15}-1067p^{14}+4468p^{13}-10922p^{12}+17317p^{11}-18731p^{10}+14067p^9$\\
+\qquad\qquad $-7155p^8+2164p^7-156p^6-129p^5+21p^4+21p^3-7p^2+2p+2)$\\
+\bottomrule
+\end{tabular}
+\caption{The polynomials $2E_1$ and $2E_2$ for the decision vectors of Table~\ref{tab:five} above $\gamma_5$.}\label{tab:poly5}
+\end{table}
+
 \begin{thebibliography}{9}
-\bibitem{FPR} P.~Fraigniaud, B.~Patt-Shamir and S.~Rajsbaum, Coordination through stochastic channels, in \emph{39th International Symposium on Distributed Computing (DISC 2025)}, LIPIcs 356, paper 32, 2025. doi:10.4230/LIPIcs.DISC.2025.32.
-\bibitem{FPR26} P.~Fraigniaud, B.~Patt-Shamir and S.~Rajsbaum, Consensus with stochastic broadcast, in \emph{40th International Symposium on Distributed Computing (DISC 2026)}, LIPIcs 397 (2026), 18:1--18:17, doi:10.4230/LIPIcs.DISC.2026.18.
+\bibitem{FPR} P.~Fraigniaud, B.~Patt-Shamir and S.~Rajsbaum, Coordination through stochastic channels, in \emph{39th International Symposium on Distributed Computing (DISC 2025)}, LIPIcs 356 (2025), 32:1--32:19, doi:10.4230/LIPIcs.DISC.2025.32.
+\bibitem{FPR26} P.~Fraigniaud, B.~Patt-Shamir and S.~Rajsbaum, Consensus with stochastic broadcast, in \emph{40th International Symposium on Distributed Computing (DISC 2026)}, LIPIcs 397 (2026), 18:1--18:17, doi:10.4230/LIPIcs.DISC.2026.18; arXiv:2608.27336.
+\bibitem{DLPSW} D.~Dolev, N.~A.~Lynch, S.~S.~Pinter, E.~W.~Stark and W.~E.~Weihl, Reaching approximate agreement in the presence of faults, \emph{J. ACM} 33 (1986), 499--516, doi:10.1145/5925.5931.
+\bibitem{Gray} J.~N.~Gray, Notes on data base operating systems, in \emph{Operating Systems: An Advanced Course}, Lecture Notes in Computer Science 60, Springer, 1978, 393--481, doi:10.1007/3-540-08755-9\_9.
 \bibitem{KLR26} S.~Knight, D.~Lehnherr and S.~Rajsbaum, An epistemic analysis of random coordinated attack, preprint, 2026, arXiv:2606.17860.
 \bibitem{Sion} M.~Sion, On general minimax theorems, \emph{Pacific J. Math.} 8 (1958), 171--176.
+\bibitem{SymPy} A.~Meurer et al., SymPy: symbolic computing in Python, \emph{PeerJ Comput. Sci.} 3 (2017), e103, doi:10.7717/peerj-cs.103.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
 \bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
