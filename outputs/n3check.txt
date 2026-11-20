@@ -1,0 +1,7 @@
+[0.000000, 0.346113]  OPT = (p - 1)*(p**3 - 3*p**2 + p - 1)   at u = ('1', '1', '0', '0')
+[0.346113, 0.500000]  OPT = (2*p**3 - p**2 - 2*p + 2)/2   at u = ('1/2', '1', '1/2', '0')
+[0.500000, 1.000000]  OPT = 1 - p   at u = ('1/2', '1/2', '1/2', '0')
+p>=1/2 piece == q: True
+  piece [0.0000,0.3461]: equals T13 middle form False, low form True
+  piece [0.3461,0.5000]: equals T13 middle form True, low form False
+  piece [0.5000,1.0000]: equals T13 middle form False, low form False

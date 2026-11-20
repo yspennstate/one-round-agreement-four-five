@@ -1,0 +1,6 @@
+low        [0.000000, 0.109884] mu in [0,1]: True  distinct polys 6561  failing 6561  identically tight 0  interior roots 6528  (702s)
+   FAIL vertex 0001000001
+   FAIL vertex 00010000h1
+   FAIL vertex 0001000011
+NEG=opt: SOME FAILED
+rc=0

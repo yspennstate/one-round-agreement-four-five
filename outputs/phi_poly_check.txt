@@ -1,0 +1,3 @@
+Phi_1 gcd(N,D) = 1 | reduced denominator degree: 10
+Phi_1/2 gcd(N,D) = 1 | reduced denominator degree: 9
+rc=0

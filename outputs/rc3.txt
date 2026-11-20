@@ -1,0 +1,5 @@
+T13 low    [0.000000, 0.346113] mu in [0,1]: True  distinct polys 26  failing 0  identically tight 1  interior roots 0  (0s)
+T13 middle [0.346113, 0.500000] mu in [0,1]: True  distinct polys 26  failing 0  identically tight 1  interior roots 0  (0s)
+T13 high   [0.500000, 1.000000] mu in [0,1]: True  distinct polys 26  failing 0  identically tight 1  interior roots 0  (0s)
+ALL OK
+rc=0

@@ -1,0 +1,61 @@
+p0=0.4700000000 rc=0 34s valid [0.4688569224, 0.4709823978]
+p0=0.4688559224 rc=0 33s valid [0.4678035514, 0.4699165414]
+p0=0.4678025514 rc=0 32s valid [0.4667564369, 0.4678035514]
+p0=0.4667554369 rc=0 32s valid [0.4649514755, 0.4667564369]
+p0=0.4649504755 rc=0 32s valid [0.4631905122, 0.4649514755]
+p0=0.4631895122 rc=0 34s valid [0.4628167885, 0.4645658347]
+p0=0.4628157885 rc=0 39s valid [0.4611092180, 0.4628167885]
+p0=0.4611082180 rc=0 38s valid [0.4594413599, 0.4611092180]
+p0=0.4594403599 rc=0 39s valid [0.4578115548, 0.4594413599]
+p0=0.4578105548 rc=0 37s valid [0.4562182395, 0.4578115548]
+p0=0.4562172395 rc=0 39s valid [0.4550773416, 0.4566606332]
+p0=0.4550763416 rc=0 36s valid [0.4535288476, 0.4550773416]
+p0=0.4535278476 rc=0 35s valid [0.4520137687, 0.4535288476]
+p0=0.4520127687 rc=0 36s valid [0.4512683491, 0.4527672146]
+p0=0.4512673491 rc=0 37s valid [0.4498009678, 0.4512683491]
+p0=0.4497999678 rc=0 34s valid [0.4413947082, 0.4498009678]
+p0=0.4413937082 rc=0 43s valid [0.4408719538, 0.4413947082]
+p0=0.4408709538 rc=0 38s valid [0.4403554531, 0.4408719538]
+p0=0.4403544531 rc=0 37s valid [0.4400994994, 0.4403554531]
+p0=0.4400984994 rc=0 31s valid [0.4280863955, 0.4400994994]
+p0=0.4280853955 rc=0 39s valid [0.4276714056, 0.4280876372]
+p0=0.4276704056 rc=0 38s valid [0.4274648362, 0.4276714056]
+p0=0.4274638362 rc=0 33s valid [0.4245199624, 0.4274648362]
+p0=0.4245189624 rc=1 4s FAIL family one p0 0.4245189624 t*(p0) -1.128956504420586e-06 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4244189624 rc=1 4s FAIL family one p0 0.4244189624 t*(p0) -0.00011407136948513267 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4243189624 rc=1 4s FAIL family one p0 0.4243189624 t*(p0) -0.00022709641766695363 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4242189624 rc=1 4s FAIL family one p0 0.4242189624 t*(p0) -0.00034020417509447954 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4241189624 rc=1 4s FAIL family one p0 0.4241189624 t*(p0) -0.00045339471589050614 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4240189624 rc=1 4s FAIL family one p0 0.4240189624 t*(p0) -0.0005666681142560624 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4239189624 rc=1 4s FAIL family one p0 0.4239189624 t*(p0) -0.00068002444447098 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4238189624 rc=1 4s FAIL family one p0 0.4238189624 t*(p0) -0.0007934637808936618 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4237189624 rc=1 4s FAIL family one p0 0.4237189624 t*(p0) -0.0009069861979614478 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4236189624 rc=1 4s FAIL family one p0 0.4236189624 t*(p0) -0.001020591770189986 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4235189624 rc=1 4s FAIL family one p0 0.4235189624 t*(p0) -0.0011342805721750665 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4234189624 rc=1 4s FAIL family one p0 0.4234189624 t*(p0) -0.0012480526785900602 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4233189624 rc=1 4s FAIL family one p0 0.4233189624 t*(p0) -0.0013619081641891482 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4232189624 rc=1 4s FAIL family one p0 0.4232189624 t*(p0) -0.0014758471038046977 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4231189624 rc=1 4s FAIL family one p0 0.4231189624 t*(p0) -0.0015898695723485588 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4230189624 rc=1 4s FAIL family one p0 0.4230189624 t*(p0) -0.0017039756448123762 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4229189624 rc=1 4s FAIL family one p0 0.4229189624 t*(p0) -0.0018181653962674803 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4228189624 rc=1 4s FAIL family one p0 0.4228189624 t*(p0) -0.0019324389018644612 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4227189624 rc=1 4s FAIL family one p0 0.4227189624 t*(p0) -0.002046796236834284 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4226189624 rc=1 4s FAIL family one p0 0.4226189624 t*(p0) -0.0021612374764875047 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4225189624 rc=1 4s FAIL family one p0 0.4225189624 t*(p0) -0.002275762696214786 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4224189624 rc=1 4s FAIL family one p0 0.4224189624 t*(p0) -0.002390371971486342 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4223189624 rc=1 4s FAIL family one p0 0.4223189624 t*(p0) -0.002505065377853952 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4222189624 rc=1 4s FAIL family one p0 0.4222189624 t*(p0) -0.002619842990948555 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4221189624 rc=1 4s FAIL family one p0 0.4221189624 t*(p0) -0.002734704886481807 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4220189624 rc=1 4s FAIL family one p0 0.4220189624 t*(p0) -0.0028496511402461237 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4219189624 rc=1 4s FAIL family one p0 0.4219189624 t*(p0) -0.0029646818281145845 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4218189624 rc=1 4s FAIL family one p0 0.4218189624 t*(p0) -0.003079797026040569 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4217189624 rc=1 4s FAIL family one p0 0.4217189624 t*(p0) -0.003194996810058394 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4216189624 rc=1 4s FAIL family one p0 0.4216189624 t*(p0) -0.0033102812562844867 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4215189624 rc=1 4s FAIL family one p0 0.4215189624 t*(p0) -0.0034256504409151648 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4214189624 rc=1 4s FAIL family one p0 0.4214189624 t*(p0) -0.00354110444022752 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4213189624 rc=1 4s FAIL family one p0 0.4213189624 t*(p0) -0.00365664333058115 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4212189624 rc=1 4s FAIL family one p0 0.4212189624 t*(p0) -0.003772267188416779 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4211189624 rc=1 4s FAIL family one p0 0.4211189624 t*(p0) -0.0038879760902556276 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4210189624 rc=1 4s FAIL family one p0 0.4210189624 t*(p0) -0.004003770112701678 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+p0=0.4209189624 rc=1 4s FAIL family one p0 0.4209189624 t*(p0) -0.004119649332440413 | groups 142  with ties: 101 | numeric certificate feasible: False The problem is infeasible. (HiGHS Status 8: model_status is  | 
+DONE covered=[(0.4688569224, 0.4709823978), (0.4678035514, 0.4699165414), (0.4667564369, 0.4678035514), (0.4649514755, 0.4667564369), (0.4631905122, 0.4649514755), (0.4628167885, 0.4645658347), (0.461109218, 0.4628167885), (0.4594413599, 0.461109218), (0.4578115548, 0.4594413599), (0.4562182395, 0.4578115548), (0.4550773416, 0.4566606332), (0.4535288476, 0.4550773416), (0.4520137687, 0.4535288476), (0.4512683491, 0.4527672146), (0.4498009678, 0.4512683491), (0.4413947082, 0.4498009678), (0.4408719538, 0.4413947082), (0.4403554531, 0.4408719538), (0.4400994994, 0.4403554531), (0.4280863955, 0.4400994994), (0.4276714056, 0.4280876372), (0.4274648362, 0.4276714056), (0.4245199624, 0.4274648362)]

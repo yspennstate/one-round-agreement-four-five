@@ -1,0 +1,2 @@
+n=3 m=3 vertices=27 groups={1: 30} merged={1: 18}
+rc=0

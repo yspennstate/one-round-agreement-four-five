@@ -1,0 +1,10 @@
+P1       lambda(1/2)=49103/79812  OPT(1/2)=49475791/106416000  equals 394955/851328: False  vectors 59049  failing 5  tight 0  min slack -1/1000
+   FAIL vertex hhhhhhhhhh
+   FAIL vertex hhh1hhhhhh
+   FAIL vertex h1110hh0h0
+P2       lambda(1/2)=49103/79812  OPT(1/2)=49475791/106416000  equals 394955/851328: False  vectors 59049  failing 5  tight 0  min slack -1/1000
+   FAIL vertex hhhhhhhhhh
+   FAIL vertex hhh1hhhhhh
+   FAIL vertex h1110hh0h0
+NEG=opt: SOME FAILED
+rc=0

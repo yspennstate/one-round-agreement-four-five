@@ -1,0 +1,11 @@
+low     [0.000000, 0.109884] lambda=0  class 9 vertices, picks 1, covered: True
+     [0.000000, 0.109884] 1111111000
+AMP     [0.109884, 0.410601] lambda=0  class 9 vertices, picks 1, covered: True
+     [0.109884, 0.410601] hhh1hhhhhh
+sliver  [0.410601, 0.414398] mixture hhh1hhhhhh/hh11hhhhhh  t in [0,1]: True
+P1      [0.414398, 0.500000] mixture hhh1hhhhhh/h1110h10h0  t in [0,1]: True
+P2      [0.500000, 0.565484] mixture hhhhhhhhhh/h1110h10h0  t in [0,1]: True
+P3      [0.565484, 0.673303] mixture hhhhhhhhhh/h1110h1000  t in [0,1]: True
+P4      [0.673303, 1.000000] mixture hhhhhhhhhh/h1110hh0h0  t in [0,1]: True
+UPPER ALL OK
+rc=0

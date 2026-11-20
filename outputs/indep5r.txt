@@ -1,0 +1,3 @@
+checked 408 vertices x 2 objectives, seed 20261117, mismatches 0
+INDEP5R ALL MATCH
+rc=0

@@ -1,0 +1,18 @@
+1110111000 w=1 match=True
+1110111000 w=2 match=True
+1111111000 w=1 match=True
+1111111000 w=2 match=True
+hhhhhhhhhh w=1 match=True
+hhhhhhhhhh w=2 match=True
+hhh1hhhhhh w=1 match=True
+hhh1hhhhhh w=2 match=True
+hh11hhhhhh w=1 match=True
+hh11hhhhhh w=2 match=True
+h1110h10h0 w=1 match=True
+h1110h10h0 w=2 match=True
+h1110h1000 w=1 match=True
+h1110h1000 w=2 match=True
+h1110hh0h0 w=1 match=True
+h1110hh0h0 w=2 match=True
+INDEP5 ALL MATCH
+rc=0

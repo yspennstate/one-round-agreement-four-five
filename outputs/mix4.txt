@@ -1,0 +1,6 @@
+one G == (1-2t)u + 2t v: True
+one Phi == opt: True  lambda == mu: True  weight on v == 2 t*: True
+   at p=1/2: lambda 94/121  mu 94/121
+half G == (1-2t)u + 2t v: True
+half Phi == opt: True  lambda == mu: True  weight on v == 2 t*: True
+   at p=1/2: lambda 94/121  mu 94/121

@@ -1,0 +1,4 @@
+P1       lambda(1/2)=49103/79812  OPT(1/2)=394955/851328  equals 394955/851328: True  vectors 59049  failing 0  tight 3  min slack 0
+P2       lambda(1/2)=49103/79812  OPT(1/2)=394955/851328  equals 394955/851328: True  vectors 59049  failing 0  tight 3  min slack 0
+ALL OK
+rc=0

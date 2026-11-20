@@ -1,0 +1,14 @@
+T13 low    [0.000000, 0.346113] mu in [0,1]: True  distinct polys 26  failing 26  identically tight 0  interior roots 26  (0s)
+   FAIL vertex 000
+   FAIL vertex 00h
+   FAIL vertex 001
+T13 middle [0.346113, 0.500000] mu in [0,1]: True  distinct polys 26  failing 3  identically tight 0  interior roots 2  (0s)
+   FAIL vertex hhh
+   FAIL vertex h1h
+   FAIL vertex 110
+T13 high   [0.500000, 1.000000] mu in [0,1]: True  distinct polys 26  failing 10  identically tight 0  interior roots 9  (0s)
+   FAIL vertex 001
+   FAIL vertex 0hh
+   FAIL vertex 010
+NEG=opt: SOME FAILED
+rc=0

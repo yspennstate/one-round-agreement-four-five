@@ -1,0 +1,3 @@
+P2         [0.500000, 0.565484] mu in [0,1]: True  distinct polys 59049  failing 0  identically tight 2  interior roots 0  (104595s)
+ALL OK
+rc=0
