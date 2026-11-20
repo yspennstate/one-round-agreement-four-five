@@ -44,7 +44,7 @@ On $[\alpha_4,\h]$ and on $[\h,1]$ the function $\OPT_4$ is rational and not a p
 \]
 (Proposition~\ref{prop:lower}). For $w\in\{0,\h,1\}^m$ the $E_k(w)$ are polynomials in $p$ with rational coefficients. When $\lambda$ is a rational function of $p$, a bound $\OPT_n\ge\Phi$ on an interval of $p$ follows from $3^m$ inequalities between rational functions on that interval, and these are decided by Sturm sequences. The matching upper bound comes from the mixture $tu+(1-t)v$ with $t$ chosen so that $tE_k(u)+(1-t)E_k(v)$ takes the same value for $k=1$ and $k=2$; by convexity this value bounds the cost of the mixture (Lemma~\ref{lem:mix}).
 
-In a related model a broadcast reaches all other processes or none of them; consensus in that model is studied in \cite{FPR26}. Knight, Lehnherr and Rajsbaum \cite{KLR26} treat randomized coordinated attack \cite{Gray}, approximate agreement and consensus with lost messages in probabilistic epistemic logic. We keep the model of \cite{FPR}, in which each message is lost independently.
+In a related model a broadcast reaches all other processes or none of them; consensus in that model is studied in \cite{FPR26}. Knight, Lehnherr and Rajsbaum \cite{KLR26} treat randomized versions of coordinated attack, a problem posed by Gray \cite{Gray}, and of approximate agreement and consensus with lost messages in probabilistic epistemic logic. We keep the model of \cite{FPR}, in which each message is lost independently.
 
 An algorithm is symmetric if it is invariant under permutations of the processes and under the exchange of the values $0$ and $1$. A symmetric algorithm is described by the value $y(k_0,k_1)$ decided by a process with input $0$ that received $k_0$ zeros and $k_1\ge1$ ones. A process with input $0$ that received no one must decide $0$, and a process with input $1$ decides $1-y(k_1,k_0)$. We call the pairs $(k_0,k_1)$ views, and the vector of the values $y(k_0,k_1)$ over the views, in the order below, the decision vector of the algorithm. For $n=4$ the views are
 \[
@@ -109,7 +109,7 @@ On each of the intervals $[\gamma_5,\delta_5]$, $[\delta_5,\h]$, $[\h,\epsilon_5
 \begin{equation}\label{eq:mix}
 \Phi_{u,v}=\frac{a_ub_v-a_vb_u}{(a_u-b_u)-(a_v-b_v)},\qquad a_w=E_1(w),\ b_w=E_2(w),
 \end{equation}
-taken in lowest terms, for the pair $(u,v)$ of Table~\ref{tab:five}, where $E_k(w)$ is the expected discrepancy of the decision vector $w$ on an assignment with $k$ ones; for these pairs $E_1$ and $E_2$ are the polynomials of Table~\ref{tab:poly5}. The optimum is attained by $\mathrm{FV}_1$ on the first interval, by $\mathrm{AMP}'$ on the second, and on the others by $tu+(1-t)v$ with $t=(b_v-a_v)/((a_u-b_u)+(b_v-a_v))\in[0,1]$. In particular $\OPT_5(\h)=394955/851328\approx0.463928$, and $\OPT_5(1)=0$.
+taken in lowest terms, for the pair $(u,v)$ of Table~\ref{tab:five}, where $E_k(w)$ is the expected discrepancy of the decision vector $w$ on an assignment with $k$ ones; for these pairs $2E_1$ and $2E_2$ are given in Table~\ref{tab:poly5}. The optimum is attained by $\mathrm{FV}_1$ on the first interval, by $\mathrm{AMP}'$ on the second, and on the others by $tu+(1-t)v$ with $t=(b_v-a_v)/((a_u-b_u)+(b_v-a_v))\in[0,1]$, again in lowest terms. In particular $\OPT_5(\h)=394955/851328\approx0.463928$, and $\OPT_5(1)=0$.
 \end{theorem}
 
 \begin{table}[t]
@@ -227,7 +227,7 @@ and $\Delta=(a_u-b_u)-(a_v-b_v)$, so both equal $\Phi_{u,v}$. For the second sta
 
 \section{Proofs of Theorems \ref{thm:four} and \ref{thm:five}}
 
-For a decision vector $w\in\{0,\h,1\}^m$ the functions $E_k(w)$ are explicit polynomials. Let $L=n(n-1)$ be the number of messages in a round. Then $2E_k(w)=\sum_{j=0}^{L}M_k[w,j]\,p^jq^{L-j}$, where the integer $M_k[w,j]$ is the sum of the doubled discrepancies of the executions in which exactly $j$ messages are delivered. The matrices $M_k$ are computed by enumerating, for each receiving process, the numbers of zeros and ones it receives, combining the receivers, and grouping executions by the set of decisions they produce. All the inequalities below are decided in exact rational and algebraic arithmetic, with Python~3.13 and SymPy~1.14 \cite{SymPy}.
+For a decision vector $w\in\{0,\h,1\}^m$ the functions $E_k(w)$ are explicit polynomials. Let $L=n(n-1)$ be the number of messages in a round. Then $2E_k(w)=\sum_{j=0}^{L}M_k[w,j]\,p^jq^{L-j}$, where the integer $M_k[w,j]$ is the sum of the doubled discrepancies of the executions in which exactly $j$ messages are delivered. The matrices $M_k$ are computed by enumerating, for each receiving process, the numbers of zeros and ones it receives, combining the receivers, and grouping executions by the set of decisions they produce. All the inequalities below are decided in exact rational and algebraic arithmetic in Python, with SymPy~1.14 \cite{SymPy}.
 
 \emph{Lower bounds.} On each interval of the two theorems we apply Proposition~\ref{prop:lower} with a function $\lambda(p)$ and the value $\Phi(p)$ stated there. On the first two intervals of each theorem $\lambda=0$. On the others $\lambda$ is the rational function of Lemma~\ref{lem:mix} for the pair $(u,v)$ that attains the optimum. For $n=4$, with
 \[
@@ -308,7 +308,7 @@ $v_\zeta$:\quad $2E_1=q^3S$\\
 \bibitem{Gray} J.~N.~Gray, Notes on data base operating systems, in \emph{Operating Systems: An Advanced Course}, Lecture Notes in Computer Science 60, Springer, 1978, 393--481, doi:10.1007/3-540-08755-9\_9.
 \bibitem{KLR26} S.~Knight, D.~Lehnherr and S.~Rajsbaum, An epistemic analysis of random coordinated attack, preprint, 2026, arXiv:2606.17860.
 \bibitem{Sion} M.~Sion, On general minimax theorems, \emph{Pacific J. Math.} 8 (1958), 171--176.
-\bibitem{SymPy} A.~Meurer et al., SymPy: symbolic computing in Python, \emph{PeerJ Comput. Sci.} 3 (2017), e103, doi:10.7717/peerj-cs.103.
+\bibitem{SymPy} A.~Meurer, C.~P.~Smith, M.~Paprocki, O.~\v{C}ert\'{\i}k, S.~B.~Kirpichev, M.~Rocklin, A.~Kumar, S.~Ivanov, J.~K.~Moore, S.~Singh, T.~Rathnayake, S.~Vig, B.~E.~Granger, R.~P.~Muller, F.~Bonazzi, H.~Gupta, S.~Vats, F.~Johansson, F.~Pedregosa, M.~J.~Curry, A.~R.~Terrel, \v{S}.~Rou\v{c}ka, A.~Saboo, I.~Fernando, S.~Kulal, R.~Cimrman and A.~Scopatz, SymPy: symbolic computing in Python, \emph{PeerJ Comput. Sci.} 3 (2017), e103, doi:10.7717/peerj-cs.103.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
 \bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
